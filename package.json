@@ -1,0 +1,19 @@
+{
+  "name": "cribbage",
+  "version": "0.0.0",
+  "description": "ERROR: No README.md file found!",
+  "main": "index.js",
+  "dependencies": {
+    "express": "~3.5.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dylanswiggett/cribbagejs.git"
+  },
+  "author": "Dylan Swiggett",
+  "license": "BSD"
+}
