@@ -1,15 +1,15 @@
 var socket;
 
-var cardCanvas;
 var boardCanvas;
-var card2D;
 var board2D;
 var board_picture;
+
+var board_picture_loaded = false;
 
 function init() {
 	init_socket();
 	console.log("Initiliazed cribbage connection.");
-	
+
 	board_picture = new Image();
 	board_picture.src = 'res/cribbage_board.png';
 	init_website();
@@ -31,9 +31,7 @@ function setPlayerCount(data) {
 }
 
 function init_website() {
-	cardCanvas = document.getElementById('card_canvas');
 	boardCanvas = document.getElementById('board_canvas');
-	card2D = cardCanvas.getContext('2d');
 	board2D = boardCanvas.getContext('2d');
 	draw();
 }
@@ -46,22 +44,23 @@ function fitToContainer(canvas){
 }
 
 function clearCanvases() {
-	fitToContainer(cardCanvas);
 	fitToContainer(boardCanvas);
-	card2D.fillStyle = "rgb(0,0,0)";
-	card2D.fillRect(0, 0, 100000, 100000);
 	board2D.fillStyle = "rgb(10,10,50)";
 	board2D.fillRect(0, 0, 100000, 100000);
 }
 
+function draw_board() {
+	board2D.drawImage(board_picture, 0, 0);
+}
+
 function draw() {
 	clearCanvases();
-	card2D.font = "15pt Arial"
-	card2D.fillStyle = "rgb(100, 0, 0)";
-	card2D.fillRect(20, 20, 100, 100);
-	card2D.fillText("Testing text", 200, 200);
+	if (board_picture_loaded) {
+		draw_board();
+	}
 	board_picture.onload = function() {
-		board2D.drawImage(board_picture, 0, 0);
+		board_picture_loaded = true;
+		draw_board();
 	}
 }
 

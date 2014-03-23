@@ -19,6 +19,4 @@ var Vector = function(startX, startY) {
 	}
 }
 
-if (window) {} else {
-	exports.Vector = Vector;
-}
+exports.Vector = Vector;
